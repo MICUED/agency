@@ -11,10 +11,10 @@ npm install
 ✌️:
 
 ```
-在package.json中改变remote.HOST，指向想要代理的HOST
+需要的接口添加到server.js
 ```
 👌:
 
 ```
-npm start
+npm run dev
 ```
