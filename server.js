@@ -9,7 +9,9 @@ app.get('/search', function (req, res, next) {
         return next(err)
       }
       var $ = cheerio.load(sres.text)
-      var items = []
+      var items = [],result = {
+        results: parseInt($('.co-weight').text())
+      }
       $('.list-item').each(function (idx, element) {
         var $element = $(element)
         items.push({
@@ -19,8 +21,8 @@ app.get('/search', function (req, res, next) {
           info: $element.find(".pds-info a").html(),
         })
       })
-
-      res.send(items)
+      result.items = items
+      res.send(result)
     })
 })
 app.listen(3000, function () {
