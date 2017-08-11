@@ -1,6 +1,7 @@
 var express = require('express')
 var cheerio = require('cheerio')
 var superagent = require('superagent')
+var homeData = require('./homeData.js')
 var app = express()
 app.get('/search', function (req, res, next) {
   superagent.get(`https://www.crov.com${req.originalUrl}`)
@@ -24,6 +25,10 @@ app.get('/search', function (req, res, next) {
       result.items = items
       res.send(result)
     })
+})
+
+app.get('/home', (req, res, next) => {
+    res.send(homeData)
 })
 app.listen(3000, function () {
   console.log('app is listening at port 3000')
