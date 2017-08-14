@@ -38,7 +38,7 @@ app.get('/p', function (req, res, next) {
       }
       var $ = cheerio.load(sres.text)
       console.log($('.total-item .total span').text())
-      var items = [],result = {
+      var items = [],imgs = [], result = {
         title: $(".J-prodName").text(),
         retailPrice: $('.J-RetailPrice b').text(),
         attrItem0Name: $('.prod-attr.m-form.mian-attr > .attr-item').first().find('.attr-name').text(),
@@ -59,6 +59,10 @@ app.get('/p', function (req, res, next) {
           attrInner: $element.find(".attr-inner").text(),
         })
       })
+      $('.swiper-slide').each((idx, element) => {
+        imgs.push(`https:${$(element).find('img').attr('src')}`)
+      })
+      result.imgs = imgs
       result.mainAttr = items
       res.send(result)
     })
