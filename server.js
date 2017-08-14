@@ -3,6 +3,13 @@ var cheerio = require('cheerio')
 var superagent = require('superagent')
 var homeData = require('./homeData.js')
 var app = express()
+
+var bodyParser = require('body-parser')
+var multer = require('multer') // v1.0.5
+var upload = multer() // for parsing multipart/form-data
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/home', (req, res, next) => {
     res.send(homeData)
 })
@@ -31,13 +38,12 @@ app.get('/search', function (req, res, next) {
 })
 // 详情页
 app.get('/p', function (req, res, next) {
-  superagent.get(`https://www.crov.com/p/free-shipping-thxsilk-pure-19mm-mulberry-silk-queen-seamless-duvet-cover-with-buttons-open---artichoke-green_bBDHqWvMgJVk.html`)
+  superagent.get(req.query.infoId)
     .end(function (err, sres) {
       if (err) {
         return next(err)
       }
       var $ = cheerio.load(sres.text)
-      console.log($('.total-item .total span').text())
       var items = [],imgs = [], result = {
         title: $(".J-prodName").text(),
         retailPrice: $('.J-RetailPrice b').text(),
