@@ -10,44 +10,48 @@ module.exports = {
     }],
     popularCategoires: [{
         imgUrl: "https://image.crov.com/spr-FaVjbDqtZcvO/home-garden-tools.jpg",
+        catCode: "bBVkDvveVPqb",
         title: "Home, Garden & Tools"
     },
     {
         imgUrl: "https://image.crov.com/spr-ChDgVqvUZYbW/automotive.jpg",
+        catCode: "DQvhVbbJVoqK",
         title: "Automotive"
     },
     {
         imgUrl: "https://image.crov.com/spr-QVqIbvDgEcVV/clothing-shoes-jewelry.jpg",
+        catCode: "bSbvVDqeVJDD",
         title: "Clothing, Shoes & Jewelry"
     },
     {
         imgUrl: "https://image.crov.com/spr-KwvyqDbyaoVO/electronics.jpg",
+        catCode: "vRDQqqVaVJbv",
         title: "Electronics"
     }],
     qualityProducts: [{
         imgUrl: "https://image.crov.com/spr-FkbSDKvYgJVq/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof.jpg",
-        href: "https:https://www.crov.com/p/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof_VTbgDHqMeJvw.html",
+        href: "https://www.crov.com/p/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof_VTbgDHqMeJvw.html",
         title: "ILepo C20 Quartz Watch with Fitness Tracker Function Bluetooth 4.0 Waterproof",
         price: "US$34.99",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-eyVlvbqQUoDM/rechargeable-motion-sensing-led-night-light.jpg",
-        href: "https:https://www.crov.com/p/rechargeable-motion-sensing-led-night-light_DlqIVQvEbPbY.html",
+        href: "https://www.crov.com/p/rechargeable-motion-sensing-led-night-light_DlqIVQvEbPbY.html",
         title: "Rechargeable Motion Sensing LED Night Light",
         price: "US$15.99",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-QtvgbeqDrcVD/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter.jpg",
-        href: "https:https://www.crov.com/p/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter_bpVcqdvMeYDa.html",
+        href: "https://www.crov.com/p/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter_bpVcqdvMeYDa.html",
         title: 'SURFUS 6.5" Waterproof Hoverboard with Buffing Shell Self-Balancing Scooter',
         price: "US$220.00",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-FjDpVevDWobq/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand.jpg",
-        href: "https:https://www.crov.com/p/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand_qubMDEVNsPvl.html",
+        href: "https://www.crov.com/p/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand_qubMDEVNsPvl.html",
         title: "Gosin Apple Watch Stand, Aerb Bamboo Wood Charging Stand",
         price: "US$12.99",
         priceType: "Discover Business Pricing"
@@ -79,54 +83,54 @@ module.exports = {
     cates:[{
         icon:"ind-tool",
         cateName:"Industrial",
-        href:"https://www.crov.com/category/industrial_bKqRDvVavPvV.html"
+        catCode:"bKqRDvVavPvV"
     },{
         icon:"ind-consumer-electronics",
         cateName:"Electronics",
-        href:"https://www.crov.com/category/electronics_vRDQqqVaVJbv.html"
+        catCode:"vRDQqqVaVJbv"
     },{
         icon:"ind-computer",
         cateName:"Computers, Office Supplies",
-        href:"https://www.crov.com/category/computers-office-supplies_DpvgbVVeboqV.html"
+        catCode:"DpvgbVVeboqV"
     },{
         icon:"ind-furniture",
         cateName:"Home, Garden & Tools",
-        href:"https://www.crov.com/category/home-garden-tools_bBVkDvveVPqb.html"
+        catCode:"bBVkDvveVPqb"
     },{
         icon:"ind-pet",
         cateName:"Pets",
-        href:"https://www.crov.com/category/pets_DZbhVvqTvJvb.html"
+        catCode:"DZbhVvqTvJvb"
     },{
         icon:"ind-beauty",
         cateName:"Beauty & Health",
-        href:"https://www.crov.com/category/beauty-health_bsVjDqvTqoqv.html"
+        catCode:"bsVjDqvTqoqv"
     },{
         icon:"ind-toy",
         cateName:"Toys, Kids & Baby",
-        href:"https://www.crov.com/category/toys-kids-baby_DyqtVVvTqPbD.html"
+        catCode:"DyqtVVvTqPbD"
     },{
         icon:"ind-apparel",
         cateName:"Clothing, Shoes & Jewelry",
-        href:"https://www.crov.com/category/clothing-shoes-jewelry_bSbvVDqeVJDD.html"
+        catCode:"bSbvVDqeVJDD"
     },{
         icon:"ind-sportting",
         cateName:"Sports",
-        href:"https://www.crov.com/category/sports_DqVIvbqJvcbK.html"
+        catCode:"DqVIvbqJvcbK"
     },{
         icon:"ind-outdoor",
         cateName:"Outdoor",
-        href:"https://www.crov.com/category/outdoor_vHDRVVbIbYqQ.html"
+        catCode:"vHDRVVbIbYqQ"
     },{
         icon:"ind-auto",
         cateName:"Automotive",
-        href:"https://www.crov.com/category/automotive_DQvhVbbJVoqK.html"
+        catCode:"DQvhVbbJVoqK"
     },{
         icon:"music",
         cateName:"Musical Instruments",
-        href:"https://www.crov.com/category/musical-instruments_DkqtvbbHvJVF.html"
+        catCode:"DkqtvbbHvJVF"
     },{
         icon:"ind-health",
         cateName:"Medical Supplies",
-        href:"https://www.crov.com/category/medical-supplies_DJqYvvbaboVv.html"
+        catCode:"DJqYvvbaboVv"
     }]
 }
