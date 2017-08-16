@@ -26,28 +26,28 @@ module.exports = {
     }],
     qualityProducts: [{
         imgUrl: "https://image.crov.com/spr-FkbSDKvYgJVq/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof.jpg",
-        href: "https:https://www.crov.com/p/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof_VTbgDHqMeJvw.html",
+        href: "https://www.crov.com/p/ilepo-c20-quartz-watch-with-fitness-tracker-function-bluetooth-40-waterproof_VTbgDHqMeJvw.html",
         title: "ILepo C20 Quartz Watch with Fitness Tracker Function Bluetooth 4.0 Waterproof",
         price: "US$34.99",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-eyVlvbqQUoDM/rechargeable-motion-sensing-led-night-light.jpg",
-        href: "https:https://www.crov.com/p/rechargeable-motion-sensing-led-night-light_DlqIVQvEbPbY.html",
+        href: "https://www.crov.com/p/rechargeable-motion-sensing-led-night-light_DlqIVQvEbPbY.html",
         title: "Rechargeable Motion Sensing LED Night Light",
         price: "US$15.99",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-QtvgbeqDrcVD/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter.jpg",
-        href: "https:https://www.crov.com/p/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter_bpVcqdvMeYDa.html",
+        href: "https://www.crov.com/p/surfus-65-waterproof-hoverboard-with-buffing-shell-self-balancing-scooter_bpVcqdvMeYDa.html",
         title: 'SURFUS 6.5" Waterproof Hoverboard with Buffing Shell Self-Balancing Scooter',
         price: "US$220.00",
         priceType: "Discover Business Pricing"
     },
     {
         imgUrl: "https://image.crov.com/spr-FjDpVevDWobq/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand.jpg",
-        href: "https:https://www.crov.com/p/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand_qubMDEVNsPvl.html",
+        href: "https://www.crov.com/p/gosin-apple-watch-stand-aerb-bamboo-wood-charging-stand_qubMDEVNsPvl.html",
         title: "Gosin Apple Watch Stand, Aerb Bamboo Wood Charging Stand",
         price: "US$12.99",
         priceType: "Discover Business Pricing"
