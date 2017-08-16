@@ -11,7 +11,26 @@ var upload = multer() // for parsing multipart/form-data
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/home', (req, res, next) => {
-    res.send(homeData)
+  superagent.get('https://www.crov.com')
+    .end(function (err, sres) {
+      if (err) {
+        return next(err)
+      }
+      var items = [],$ = cheerio.load(sres.text)
+      
+      $('.h-pd .pd-item').each(function (index, element) {
+        var $element = $(element)
+        items.push({
+          imgUrl: `https:${$element.find(".pd-img img").attr("data-original")}`,
+          href: $element.find(".pd-img a").attr("href"),
+          title: $element.find(".pd-name a").attr("title"),
+          price: $element.find(".origin-price").text(),
+          priceType: $element.find(".price-type").text()
+        }) 
+      })
+      homeData.qualityProducts = items
+      res.send(homeData)
+    })
 })
 app.get('/search', function (req, res, next) {
   superagent.get(`https://www.crov.com${req.originalUrl}`)
@@ -20,7 +39,7 @@ app.get('/search', function (req, res, next) {
         return next(err)
       }
       var $ = cheerio.load(sres.text)
-      var items = [],result = {
+      var items = [], result = {
         results: parseInt($('.co-weight').text())
       }
       $('.list-item').each(function (idx, element) {
@@ -44,7 +63,7 @@ app.get('/p', function (req, res, next) {
         return next(err)
       }
       var $ = cheerio.load(sres.text)
-      var items = [],imgs = [], result = {
+      var items = [], imgs = [], result = {
         title: $(".J-prodName").text(),
         retailPrice: $('.J-RetailPrice b').text(),
         attrItem0Name: $('.prod-attr.m-form.mian-attr > .attr-item').first().find('.attr-name').text(),
