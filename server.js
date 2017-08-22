@@ -2,7 +2,9 @@ var express = require('express')
 var cheerio = require('cheerio')
 var superagent = require('superagent')
 var homeData = require('./homeData.js')
+var eventproxy = require("eventproxy")
 var app = express()
+var ep = new eventproxy()
 
 var bodyParser = require('body-parser')
 var multer = require('multer') // v1.0.5
@@ -16,8 +18,8 @@ app.get('/home', (req, res, next) => {
       if (err) {
         return next(err)
       }
-      var items = [],$ = cheerio.load(sres.text)
-      
+      var items = [], $ = cheerio.load(sres.text)
+
       $('.h-pd .pd-item').each(function (index, element) {
         var $element = $(element)
         items.push({
@@ -26,7 +28,7 @@ app.get('/home', (req, res, next) => {
           title: $element.find(".pd-name a").attr("title"),
           price: $element.find(".origin-price").text(),
           priceType: $element.find(".price-type").text()
-        }) 
+        })
       })
       homeData.qualityProducts = items
       res.send(homeData)
@@ -64,6 +66,8 @@ app.get('/p', function (req, res, next) {
       }
       var $ = cheerio.load(sres.text)
       var items = [], imgs = [], result = {
+        productID: $("#productID").attr("value"),
+        busiID: $("#busiID").attr("value"),
         title: $(".J-prodName").text(),
         retailPrice: $('.J-RetailPrice b').text(),
         attrItem0Name: $('.prod-attr.m-form.mian-attr > .attr-item').first().find('.attr-name').text(),
@@ -92,6 +96,30 @@ app.get('/p', function (req, res, next) {
       res.send(result)
     })
 })
+
+app.post("/getDetailedCartList", function (req, res, next) {
+  const goodsList = req.body.goodsList
+  console.log(goodsList)
+  goodsList.forEach(({ href, num, }) => {
+    superagent.get(href)
+      .end(function (err, sres) {
+        var $ = cheerio.load(sres.text)
+        var item = {
+          productID: $("#productID").attr("value"),
+          busiID: $("#busiID").attr("value"),
+          title: $(".J-prodName").text(),
+          retailPrice: $('.J-RetailPrice b').text(),
+          imgUrl: $('.swiper-slide').find('img').attr('src')
+        }
+        ep.emit('done', item);
+      })
+  })
+  ep.after('done', goodsList.length, (result) => {
+    console.log(result)
+    res.send(result)
+  })
+})
+
 app.listen(3000, function () {
   console.log('app is listening at port 3000')
 })

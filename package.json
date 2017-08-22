@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "eventproxy": "^1.0.0",
     "multer": "^1.3.0"
   }
 }

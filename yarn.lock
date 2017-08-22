@@ -198,7 +198,7 @@ debug@2.6.7:
   dependencies:
     ms "2.0.0"
 
-debug@2.6.8, debug@^2.2.0:
+debug@2.6.8, debug@^2.2.0, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -311,6 +311,12 @@ esprima@~3.0.0:
 etag@~1.8.0:
   version "1.8.0"
   resolved "https://registry.npmjs.org/etag/-/etag-1.8.0.tgz#6f631aef336d6c46362b51764044ce216be3c051"
+
+eventproxy@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/eventproxy/-/eventproxy-1.0.0.tgz#8f384890824e0c06c40dc3f59ce2444793821d99"
+  dependencies:
+    debug "^2.6.8"
 
 express@^4.15.3:
   version "4.15.4"
