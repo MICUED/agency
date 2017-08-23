@@ -92,6 +92,8 @@ app.get('/p', function (req, res, next) {
       res.send(result)
     })
 })
+app.get('/login', function (req, res) {
+})
 app.listen(3000, function () {
   console.log('app is listening at port 3000')
 })
