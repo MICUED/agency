@@ -64,6 +64,7 @@ app.get('/p', function (req, res, next) {
       if (err) {
         return next(err)
       }
+      
       var $ = cheerio.load(sres.text)
       var items = [], imgs = [], result = {
         productID: $("#productID").attr("value"),
@@ -81,6 +82,7 @@ app.get('/p', function (req, res, next) {
         totalName: $('.total-item .attr-name').text(),
         totalValue: $('.total-item .total').text()
       }
+      
       $('.prod-select.for-m .attr-item').each(function (idx, element) {
         var $element = $(element)
         items.push({
@@ -117,7 +119,13 @@ app.post("/getDetailedCartList", function (req, res, next) {
       })
   })
   ep.after('done', goodsList.length, (result) => {
-    res.send(result)
+    const sortList = goodsList.map((og, index) => {
+      let fResult = result.filter((val) => {
+        return og.productID === val.productID
+      })
+      return fResult[0]
+    })
+    res.send(sortList)
   })
 })
 
