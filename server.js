@@ -99,7 +99,6 @@ app.get('/p', function (req, res, next) {
 
 app.post("/getDetailedCartList", function (req, res, next) {
   const goodsList = req.body.goodsList
-  console.log(goodsList)
   goodsList.forEach(({ href, num, }) => {
     superagent.get(href)
       .end(function (err, sres) {
@@ -109,13 +108,15 @@ app.post("/getDetailedCartList", function (req, res, next) {
           busiID: $("#busiID").attr("value"),
           title: $(".J-prodName").text(),
           retailPrice: $('.J-RetailPrice b').text(),
-          imgUrl: $('.swiper-slide').find('img').attr('src')
+          wrapType: $('.input-price .J-unitType').text(),
+          imgUrl: 'https:' + $('.swiper-slide').find('img').attr('src'),
+          href,
+          num
         }
         ep.emit('done', item);
       })
   })
   ep.after('done', goodsList.length, (result) => {
-    console.log(result)
     res.send(result)
   })
 })
