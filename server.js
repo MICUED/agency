@@ -2,7 +2,9 @@ var express = require('express')
 var cheerio = require('cheerio')
 var superagent = require('superagent')
 var homeData = require('./homeData.js')
+var eventproxy = require("eventproxy")
 var app = express()
+var ep = new eventproxy()
 
 var bodyParser = require('body-parser')
 var multer = require('multer') // v1.0.5
@@ -16,8 +18,8 @@ app.get('/home', (req, res, next) => {
       if (err) {
         return next(err)
       }
-      var items = [],$ = cheerio.load(sres.text)
-      
+      var items = [], $ = cheerio.load(sres.text)
+
       $('.h-pd .pd-item').each(function (index, element) {
         var $element = $(element)
         items.push({
@@ -26,7 +28,7 @@ app.get('/home', (req, res, next) => {
           title: $element.find(".pd-name a").attr("title"),
           price: $element.find(".origin-price").text(),
           priceType: $element.find(".price-type").text()
-        }) 
+        })
       })
       homeData.qualityProducts = items
       res.send(homeData)
@@ -62,8 +64,11 @@ app.get('/p', function (req, res, next) {
       if (err) {
         return next(err)
       }
+      
       var $ = cheerio.load(sres.text)
       var items = [], imgs = [], result = {
+        productID: $("#productID").attr("value"),
+        busiID: $("#busiID").attr("value"),
         title: $(".J-prodName").text(),
         retailPrice: $('.J-RetailPrice b').text(),
         attrItem0Name: $('.prod-attr.m-form.mian-attr > .attr-item').first().find('.attr-name').text(),
@@ -77,6 +82,7 @@ app.get('/p', function (req, res, next) {
         totalName: $('.total-item .attr-name').text(),
         totalValue: $('.total-item .total').text()
       }
+      
       $('.prod-select.for-m .attr-item').each(function (idx, element) {
         var $element = $(element)
         items.push({
@@ -94,6 +100,36 @@ app.get('/p', function (req, res, next) {
 })
 app.get('/login', function (req, res) {
 })
+app.post("/getDetailedCartList", function (req, res, next) {
+  const goodsList = req.body.goodsList
+  goodsList.forEach(({ href, num, }) => {
+    superagent.get(href)
+      .end(function (err, sres) {
+        var $ = cheerio.load(sres.text)
+        var item = {
+          productID: $("#productID").attr("value"),
+          busiID: $("#busiID").attr("value"),
+          title: $(".J-prodName").text(),
+          retailPrice: $('.J-RetailPrice b').text(),
+          wrapType: $('.input-price .J-unitType').text(),
+          imgUrl: 'https:' + $('.swiper-slide').find('img').attr('src'),
+          href,
+          num
+        }
+        ep.emit('done', item);
+      })
+  })
+  ep.after('done', goodsList.length, (result) => {
+    const sortList = goodsList.map((og, index) => {
+      let fResult = result.filter((val) => {
+        return og.productID === val.productID
+      })
+      return fResult[0]
+    })
+    res.send(sortList)
+  })
+})
+
 app.listen(3000, function () {
   console.log('app is listening at port 3000')
 })
